@@ -6,7 +6,7 @@ import { fetchContent } from "./slice/contentSlice";
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(fetchContent())
+    dispatch(fetchContent());
   }, [dispatch]);
 
   const contents = useSelector((state) => state.content.contents);
@@ -22,16 +22,24 @@ function App() {
   }
   return (
     <div>
-      {contents?.map((content) => (
-        <div key={content.id}>
-          <img
-            src={`${content.thumbnailUrl}`}
-            alt={`${content.title}`}
-          />
-          <br/>
-          {content.title}
-        </div>
-      ))}
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address(city)</th>
+          <th>Phoneno</th>
+          <th>Company Name</th>
+        </tr>
+        {contents?.map((content) => (
+          <tr key={content.id}>
+            <td>{content.name}</td>
+            <td>{content.email}</td>
+            <td>{content.address.city}</td>
+            <td>{content.phone}</td>
+            <td>{content.company.name}</td>
+          </tr>
+        ))}
+      </table>
     </div>
   );
 }

@@ -10,7 +10,7 @@ const initialState = {
 export const fetchContent = createAsyncThunk(
     'content/fetchContent',
     async () => {
-        const res = await axios ('https://jsonplaceholder.typicode.com/photos')
+        const res = await axios ('https://jsonplaceholder.typicode.com/users')
         const data = await res.data
         return data
     }
